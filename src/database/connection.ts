@@ -1,24 +1,40 @@
 import { Sequelize } from 'sequelize-typescript';
 import * as dotenv from 'dotenv'
+import { Category } from '../models/category';
 
-class Connection {
+dotenv.config();
 
-    public connection: Sequelize
+export const conn: Sequelize = new Sequelize({
+    dialect: "postgres",
+    host: process.env.BD_HOST,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+// port: 5432,
+    logging: false,
+});
 
-    constructor() {
-        dotenv.config();
+// class Connection {
 
-        this.connection = new Sequelize({
-            dialect: "postgres",
-            host: process.env.BD_HOST,
-            username: process.env.DB_USERNAME,
-            password: process.env.DB_PASSWORD,
-            database: process.env.DB_NAME,
-           // port: 5432,
-            logging: false
-        });
+//     public connection: Sequelize
+
+//     constructor() {
+//         dotenv.config();
+
+//         this.connection = new Sequelize({
+//             dialect: "postgres",
+//             host: process.env.BD_HOST,
+//             username: process.env.DB_USERNAME,
+//             password: process.env.DB_PASSWORD,
+//             database: process.env.DB_NAME,
+//            // port: 5432,
+//             logging: false,
+//             // models: [
+//             //     Category
+//             // ]
+//         });
         
-    }
-}
+//     }
+// }
 
-export default Connection;
+// export default Connection;
